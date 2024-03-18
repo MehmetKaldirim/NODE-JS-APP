@@ -1,0 +1,24 @@
+{
+  "name": "node-js-app",
+  "version": "1.0.0",
+  "description": "Node js start",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MehmetKaldirim/NODE-JS-APP.git"
+  },
+  "author": "Mehmet Kaldirim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MehmetKaldirim/NODE-JS-APP/issues"
+  },
+  "homepage": "https://github.com/MehmetKaldirim/NODE-JS-APP#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
