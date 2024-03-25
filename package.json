@@ -28,6 +28,7 @@
     "express-handlebars": "^7.1.2",
     "mongobd": "^0.0.1-security.0",
     "mongodb": "^6.5.0",
+    "mongoose": "^8.2.3",
     "mysql2": "^3.9.2",
     "pug": "^3.0.2",
     "sequelize": "^6.37.1"
