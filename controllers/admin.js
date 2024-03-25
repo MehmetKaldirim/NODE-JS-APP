@@ -18,6 +18,7 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     description: description,
     imageUrl: imageUrl,
+    userId:req.user,    //we can add ._id but without that mongoose take the id from entire user information
   });
   product
     .save()
@@ -75,6 +76,8 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.find()
+   // .select('title price -_id')
+   // .populate('userId', 'name')
     .then((products) => {
       res.render("admin/products", {
         prods: products,

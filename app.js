@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const errorController = require("./controllers/error");
-//const User = require("./models/user");
+const User = require("./models/user");
 
 const app = express();
 
@@ -18,14 +18,14 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use((req, res, next) => {
-//   User.findById("66007dd1a52769a97d8d4ee0")
-//     .then((user) => {
-//       req.user = new User(user.name, user.email, user.cart, user._id);
-//       next();
-//     })
-//     .catch((err) => console.log(err));
-// });
+app.use((req, res, next) => {
+  User.findById("6600e3dbea823448b94eec12")
+    .then((user) => {
+      req.user = user;
+      next();
+    })
+    .catch((err) => console.log(err));
+});
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
@@ -37,6 +37,19 @@ mongoose
     "mongodb+srv://math:Pp11223344-@cluster0.89wbtaz.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0"
   )
   .then((result) => {
+    User.findOne().then(user=>{
+      if(!user){
+        const user = new User({
+          name : 'Math',
+          email : 'math@test.com',
+          cart : {
+            items: []
+          }
+        });
+        user.save();
+      }
+    });
+    
     app.listen(3000);
   })
   .catch((err) => {
