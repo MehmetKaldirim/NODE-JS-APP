@@ -35,7 +35,7 @@ const MONGODB_URI =
       store: store
     })
   );
-
+  
   app.use((req, res, next) => {
     if (!req.session.user) {
       return next();
@@ -53,7 +53,7 @@ const MONGODB_URI =
   app.use(authRoutes);
   
   app.use(errorController.get404);
-
+  
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
